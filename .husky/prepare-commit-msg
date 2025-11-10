@@ -1,0 +1,7 @@
+if [ "$2" = "merge" ] || [ "$2" = "squash" ] || [ -n "$2" ]; then
+  exit 0
+fi
+
+if [ -z "$2" ]; then
+  exec < /dev/tty && npx cz --hook || true
+fi

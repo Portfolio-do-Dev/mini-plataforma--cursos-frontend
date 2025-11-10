@@ -1,0 +1,23 @@
+# Check if we're in initial commit (HEAD doesn't exist yet)
+if git rev-parse --verify HEAD >/dev/null 2>&1; then
+  branch=$(git rev-parse --abbrev-ref HEAD)
+else
+  # For initial commit, check the current branch name
+  branch=$(git branch --show-current)
+  # If no branch exists yet (shouldn't happen with git init -b main), skip validation
+  if [ -z "$branch" ]; then
+    echo "⚠️  No branch detected, skipping branch validation for initial commit"
+    exit 0
+  fi
+fi
+
+valid_branch_regex="^(main|develop|(feature|bugfix|hotfix|docs|release)/[a-z0-9._-]+)$"
+
+if ! echo "$branch" | grep -qE "$valid_branch_regex"; then
+  echo "❌ Branch name '$branch' does not follow naming convention!"
+  echo "📝 Branch names must match: feature/*, bugfix/*, hotfix/*, docs/*, release/*, main, or develop"
+  echo "Example: feature/user-authentication"
+  exit 1
+fi
+
+echo "✅ Branch name is valid"
