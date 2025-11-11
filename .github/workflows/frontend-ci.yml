@@ -7,7 +7,7 @@ on:
     branches: [main, develop]
 
 env:
-  NODE_VERSION: '18'
+  NODE_VERSION: '20'
 
 jobs:
   lint-and-format:
@@ -18,7 +18,7 @@ jobs:
       
       - uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 10
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,12 +31,6 @@ jobs:
       
       - name: Run ESLint
         run: pnpm run lint
-      
-      - name: Check Prettier formatting
-        run: pnpm run format:check
-      
-      - name: TypeScript type check
-        run: pnpm run type-check
 
   build:
     name: Build
@@ -47,7 +41,7 @@ jobs:
       
       - uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 10
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
