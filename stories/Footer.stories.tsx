@@ -1,4 +1,4 @@
-import Footer from "../components/footer.tsx";
+import Footer from "../components/footer.js";
 
 const meta = {
   title: "Components/Footer",
@@ -7,7 +7,8 @@ const meta = {
 
 export default meta;
 
-function Template() {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function Template(_args: Record<string, never>) {
   return {
     // Representação sem JSX  
     type: "div",
@@ -18,5 +19,5 @@ function Template() {
   };
 }
 
-export const Default = Template.bind({});
+export const Default = Template.bind({}) as typeof Template & { args: Record<string, never> };
 Default.args = {};
