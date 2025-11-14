@@ -1,8 +1,29 @@
 @import "tailwindcss";
 
+/* ===============================
+   🎨 VARIÁVEIS GERAIS DO TEMA
+================================ */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --header-bg-start: #0b0b0b;
+  --header-bg-end: #1a1a1a;
+
+  --nav-text: #f8a54a;
+  --nav-text-hover: #ffffff;
+
+  --submenu-bg: #111111;
+  --submenu-hover: #1c1c1c;
+
+  --border-submenu: #2b2b2b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0B0B0B;
+    --foreground: #e7d4ff;
+  }
 }
 
 @theme inline {
@@ -12,15 +33,82 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0B0B0B;
-    --foreground: #7A3FF2;
-  }
-}
-
+/* ===============================
+   🌎 RESET GLOBAL
+================================ */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===============================
+   🧩 HEADER GLOBAL STYLES
+================================ */
+
+.header-container {
+  @apply flex items-center justify-between px-8 py-4 shadow-lg relative;
+  background: linear-gradient(to right, var(--header-bg-start), var(--header-bg-end));
+}
+
+.header-logo {
+  @apply flex items-center gap-3 ml-24;
+}
+
+.header-logo-img {
+  @apply w-40 h-40 rounded-full object-cover scale-150;
+}
+
+/* NAVBAR */
+.header-nav {
+  @apply absolute left-1/2 -translate-x-1/2 flex gap-20 px-8 py-3 rounded-xl backdrop-blur-md shadow-md text-3xl;
+  color: var(--nav-text);
+}
+
+/* LINKS */
+.nav-link {
+  @apply transition-colors;
+  color: var(--nav-text);
+}
+
+.nav-link:hover {
+  color: var(--nav-text-hover);
+}
+
+/* SUBMENUS */
+.submenu-wrapper {
+  @apply relative;
+}
+
+.submenu-button {
+  @apply transition-colors;
+  color: var(--nav-text);
+}
+
+.submenu-button:hover {
+  color: var(--nav-text-hover);
+}
+
+.submenu-panel {
+  @apply absolute left-0 top-full mt-2 w-56 border rounded-lg shadow-lg opacity-0 invisible transition-all duration-200 ease-in-out;
+  background: var(--submenu-bg);
+  border-color: var(--border-submenu);
+}
+
+.submenu-panel.open {
+  @apply opacity-100 visible;
+}
+
+.submenu-list {
+  @apply py-2;
+}
+
+.submenu-item {
+  @apply block px-4 py-2 transition-colors;
+  color: var(--nav-text);
+}
+
+.submenu-item:hover {
+  background: var(--submenu-hover);
+  color: var(--nav-text-hover);
 }
