@@ -22,23 +22,23 @@ A containerized online course platform designed to provide a scalable, modern le
 
 ### Prerequisites
 - Node.js >= 18.0.0
-- npm >= 9.0.0
+- pnpm >= 10.0.0
 - [Docker & Docker Compose for development]
 
 ### Installation
 ```bash
-npm install
+pnpm install
 ```
 
 ### Development
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ### Testing
 ```bash
-npm test        # Unit tests
-npm run test:e2e # E2E tests
+pnpm test        # Unit tests
+pnpm run test:e2e # E2E tests
 
 ---
 
@@ -333,15 +333,15 @@ git branch
 #### 2. Set Up Your Local Environment
 ```bash
 # Install dependencies (if applicable)
-npm install
+pnpm install
 
 # Set up environment variables
 cp .env.example .env
 # Edit .env with your local configuration
 
 # Verify the setup
-npm run lint
-npm test
+pnpm run lint
+pnpm test
 ```
 
 #### 3. Update Your Local Repository
@@ -399,13 +399,13 @@ git diff
 # - frontend/src/components/CourseRating.test.tsx
 
 # Run tests locally
-npm test
+pnpm test
 
 # Run linter
-npm run lint
+pnpm run lint
 
 # Fix linting issues automatically
-npm run lint:fix
+pnpm run lint:fix
 ```
 
 #### 8. Commit Your Changes

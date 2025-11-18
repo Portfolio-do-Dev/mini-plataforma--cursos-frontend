@@ -1,23 +1,22 @@
-import Footer from "../components/footer.js";
+// Footer.stories.tsx
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import Footer from '../components/footer';
 
-const meta = {
-  title: "Components/Footer",
+const meta: Meta<typeof Footer> = {
+  title: 'Components/Footer',
   component: Footer,
+  tags: ['autodocs'],
 };
 
 export default meta;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Template(_args: Record<string, never>) {
-  return {
-    // Representação sem JSX  
-    type: "div",
-    props: {
-      className: "p-4 text-center text-sm text-gray-500",
-      children: Footer(),
-    },
-  };
-}
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({}) as typeof Template & { args: Record<string, never> };
-Default.args = {};
+export const Default: Story = {
+  args: {},
+  render: () => (
+    <div className="p-4 text-center text-sm text-gray-500">
+      <Footer />
+    </div>
+  ),
+};

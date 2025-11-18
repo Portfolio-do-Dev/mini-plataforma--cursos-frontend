@@ -1,22 +1,22 @@
-import Header from "../components/header.js";
+// Header.stories.tsx
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import Header from '../components/header';
 
-const meta = {
-  title: "Components/Header",
+const meta: Meta<typeof Header> = {
+  title: 'Components/Header',
   component: Header,
+  tags: ['autodocs'],
 };
 
 export default meta;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Template(_args: Record<string, never>) {
-  return {
-    type: "div",
-    props: {
-      className: "w-full h-[300px] bg-gray-950",
-      children: Header(),
-    },
-  };
-}
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({}) as typeof Template & { args: Record<string, never> };
-Default.args = {};
+export const Default: Story = {
+  args: {},
+  render: () => (
+    <div className="w-full h-[300px] bg-gray-950">
+      <Header />
+    </div>
+  ),
+};
